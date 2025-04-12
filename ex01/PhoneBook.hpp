@@ -17,21 +17,26 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <limits>
+#include <string>
 
 class PhoneBook {
 private:
-	static const int MAX_CONTACTS = 8; // Maximum number of contacts
-	Contact contacts[MAX_CONTACTS];   // Array to store contacts
-	int contactCount;                 // Number of stored contacts
+// Data members
+	static const int MAX_CONTACTS = 8;
+	Contact contacts[MAX_CONTACTS];
+	int contactCount;
+
+// Internal helper methods
+	void displayContactsList() const;
 
 public:
+ // Public interface
 	PhoneBook();
 
 	void addContact();
 	void searchContacts() const;
 
-private:
-	void displayContactsList() const; // Helper function to display the list of contacts
 };
 
 #endif

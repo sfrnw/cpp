@@ -11,7 +11,6 @@
 	/* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-#include <limits> // Added for std::numeric_limits
 
 PhoneBook::PhoneBook() : contactCount(0) {}
 
@@ -75,10 +74,15 @@ void PhoneBook::searchContacts() const {
 
 	if (std::cin.fail() || index < 0 || index >= contactCount) {
 		std::cin.clear(); // Clear error flags
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore invalid input
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear buffer
 		std::cout << "Invalid index!" << std::endl;
 		return;
 	}
+	
+	// std::cin.ignore(...) discards all characters in the input buffer
+	// up to and including the next newline ('\n'). This prevents the leftover 
+	// newline from being interpreted as an invalid command in the next iteration of the main loop.
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
 
 	// Display selected contact details
 	const Contact& contact = contacts[index];
@@ -89,8 +93,20 @@ void PhoneBook::searchContacts() const {
 	std::cout << "Darkest Secret: " << contact.getDarkestSecret() << std::endl;
 }
 
+// Helper function for truncation
+// The truncate function starts with std::string in its declaration because it returns 
+// a std::string object, and its parameter is a const reference to a std::string.
+std::string truncate(const std::string& str) {
+	if (str.length() > 10) {
+		return str.substr(0, 9) + ".";
+	}
+	return str;
+}
+
 void PhoneBook::displayContactsList() const {
 	// Display header
+	// std::setw(n): Sets the width of the output field to n character, its from <iomanip>
+	// for formatting output, ensuring columns are aligned properly when displaying contacts.
 	std::cout << std::setw(10) << "Index" << "|"
 			<< std::setw(10) << "First Name" << "|"
 			<< std::setw(10) << "Last Name" << "|"
@@ -98,16 +114,12 @@ void PhoneBook::displayContactsList() const {
 
 	// Display each contact
 	for (int i = 0; i < contactCount; i++) {
-		const Contact& contact = contacts[i];
-		auto truncate = [](const std::string& str) -> std::string {
-			return str.length() > 10 ? str.substr(0, 9) + "." : str;
-		};
-
-		std::cout << std::setw(10) << i << "|"
-				<< std::setw(10) << truncate(contact.getFirstName()) << "|"
-				<< std::setw(10) << truncate(contact.getLastName()) << "|"
-				<< std::setw(10) << truncate(contact.getNickname())
-				<< "|"
-				<< "\n";
-	}
+        const Contact& contact = contacts[i];
+        std::cout << std::setw(10) << i << "|"
+                  << std::setw(10) << truncate(contact.getFirstName()) << "|"
+                  << std::setw(10) << truncate(contact.getLastName()) << "|"
+                  << std::setw(10) << truncate(contact.getNickname()) 
+                  << "|" 
+                  << "\n";
+    }
 }

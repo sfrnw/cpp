@@ -33,7 +33,8 @@ int main() {
 			std::cout << "Unknown command. Please try again." << std::endl;
 		}
 
-		if (std::cin.eof()) { // Handle EOF gracefully
+		// Handle EOF gracefully
+		if (std::cin.eof()) {
 			break;
 		}
 	}
