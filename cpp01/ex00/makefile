@@ -10,33 +10,35 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Variables for compiler and flags
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror
+# -std=c++98
 
-# Target executable name
 NAME = BraiiiiiiinnnzzzZ
 
-# Source files
-SRCS = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+SRC = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+OBJ_DIR = obj
+OBJS = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
-# Object files (generated from source files)
-OBJS = $(SRCS:.cpp=.o)
-
-# Default rule to build the executable
-all: $(NAME)
+all: $(OBJ_DIR) $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
+	@$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
-%.o: %.cpp Zombie.hpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: %.cpp
+	@echo "Compiling $<..."
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
 
 clean:
-	rm -f $(OBJS)
+	@echo "Cleaning object files..."
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	@echo "Removing executable..."
+	@rm -f $(NAME)
 
 re: fclean all
 

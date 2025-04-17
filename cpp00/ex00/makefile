@@ -10,29 +10,37 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
-CC = c++
-CFLAGS = -Wall -Wextra -Werror
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror
 # -std=c++98
-SRC = megaphone.cpp
+
+NAME = BraiiiiiiinnnzzzZ
+
+SRC = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 OBJ_DIR = obj
 OBJS = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
 all: $(OBJ_DIR) $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	@echo "Linking $(NAME)..."
+	@$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
 $(OBJ_DIR)/%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+	@echo "Compiling $<..."
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
 
 clean:
-	rm -rf $(OBJ_DIR)
+	@echo "Cleaning object files..."
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	@echo "Removing executable..."
+	@rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
