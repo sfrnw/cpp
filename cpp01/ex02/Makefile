@@ -6,7 +6,7 @@
 #    By: asafrono <asafrono@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/17 19:45:35 by asafrono          #+#    #+#              #
-#    Updated: 2025/04/17 19:54:08 by asafrono         ###   ########.fr        #
+#    Updated: 2025/04/20 11:09:39 by asafrono         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,19 +18,24 @@ SRC = main.cpp
 OBJ_DIR = obj
 OBJS = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
-all: $(NAME)
+all: $(OBJ_DIR) $(NAME)
 
 $(NAME): $(OBJS)
 	@$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
 $(OBJ_DIR)/%.o: %.cpp
-	@mkdir -p $(OBJ_DIR)
+	@echo "Compiling $<..."
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
 clean:
+	@echo "Cleaning object files..."
 	@rm -rf $(OBJ_DIR)
 
 fclean: clean
+	@echo "Removing executable..."
 	@rm -f $(NAME)
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: asafrono <asafrono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 16:58:15 by asafrono          #+#    #+#             */
-/*   Updated: 2025/04/18 20:39:18 by asafrono         ###   ########.fr       */
+/*   Updated: 2025/04/21 19:13:50 by asafrono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ private:
     struct ComplaintLevel {
         std::string name;
         ComplaintFunction function;
+		//void (Harl::*function)(void);
     };
     
     static ComplaintLevel levels[4];
