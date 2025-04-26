@@ -6,7 +6,7 @@
 /*   By: asafrono <asafrono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 20:13:08 by asafrono          #+#    #+#             */
-/*   Updated: 2025/04/23 20:32:35 by asafrono         ###   ########.fr       */
+/*   Updated: 2025/04/26 13:27:43 by asafrono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,17 @@ private:
     static const int    _fractionalBits = 8;
 
 public:
-    Fixed();                            // Default constructor
-    Fixed(const Fixed& other);          // Copy constructor
-    Fixed& operator=(const Fixed& other); // Copy assignment operator
-    ~Fixed();                           // Destructor
-
+	// Default constructor
+    Fixed();
+	// Copy constructor
+    Fixed(const Fixed& other);
+	// Copy assignment operator
+	Fixed& operator=(const Fixed& other);
+	//Destructor    
+	~Fixed();
+	
     int  getRawBits(void) const;
     void setRawBits(int const raw);
 };
 
-#endif // FIXED_HPP
+#endif

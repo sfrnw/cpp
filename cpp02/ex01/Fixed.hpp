@@ -6,7 +6,7 @@
 /*   By: asafrono <asafrono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 20:13:08 by asafrono          #+#    #+#             */
-/*   Updated: 2025/04/23 20:36:27 by asafrono         ###   ########.fr       */
+/*   Updated: 2025/04/26 14:53:58 by asafrono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,32 @@
 class Fixed {
 private:
     int                 _value;
-    static const int    _fractionalBits = 8;
-
+    static const int    _fractionalBits = 8; 
+	
 public:
-    Fixed();                            // Default constructor
+    Fixed();
+	
     //new
-	Fixed(const int value);             // Int constructor
-    Fixed(const float value);           // Float constructor
+	//Int constructor
+	Fixed(const int value);
+	//Float constructor
+    Fixed(const float value);
 	//
-	Fixed(const Fixed& other);          // Copy constructor
-    Fixed& operator=(const Fixed& other); // Copy assignment operator
-    ~Fixed();                           // Destructor
+
+	Fixed(const Fixed& other);
+    Fixed& operator=(const Fixed& other);
+    ~Fixed();
 
     int  getRawBits(void) const;
     void setRawBits(int const raw);
+	//
 	float toFloat(void) const;
 	int toInt(void) const;
+	//
 };
 
 // Overload for the << operator
 std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
 
 
-#endif // FIXED_HPP
+#endif

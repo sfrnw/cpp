@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   StringReplacer.hpp                                 :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asafrono <asafrono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/18 16:58:08 by asafrono          #+#    #+#             */
-/*   Updated: 2025/04/24 20:00:52 by asafrono         ###   ########.fr       */
+/*   Created: 2025/04/23 20:21:20 by asafrono          #+#    #+#             */
+/*   Updated: 2025/04/26 17:21:06 by asafrono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRINGREPLACER_HPP
-#define STRINGREPLACER_HPP
+#include "ClapTrap.hpp"
+#include <iostream>
 
-#include <string>
+int main() {
+    ClapTrap clap1("CLAP-1");
+    ClapTrap clap2("CLAP-2");
 
-class StringReplacer {
-	public:
-	static bool replaceInFile(const std::string& filename, 
-								const std::string& s1, 
-								const std::string& s2);
-	private:
-	static std::string _replaceOccurrences(std::string content, 
-											const std::string& s1, 
-											const std::string& s2);
-};
+    clap1.attack("CLAP-2");
+    clap2.takeDamage(5);
+    clap2.beRepaired(3);
 
-#endif
+    for (int i = 0; i < 11; i++)
+        clap1.attack("CLAP-2");
+
+    clap2.takeDamage(10);
+    clap2.beRepaired(5);
+    
+    return 0;
+}
+

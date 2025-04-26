@@ -6,7 +6,7 @@
 /*   By: asafrono <asafrono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 20:14:13 by asafrono          #+#    #+#             */
-/*   Updated: 2025/04/23 20:32:51 by asafrono         ###   ########.fr       */
+/*   Updated: 2025/04/26 13:41:14 by asafrono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ Fixed::~Fixed() {
     std::cout << "Destructor called" << std::endl;
 }
 
+//The const at the end of the member function declaration means that this function
+//does not modify the state of the object on which it is called
 int Fixed::getRawBits(void) const {
     std::cout << "getRawBits member function called" << std::endl;
     return this->_value;

@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   StringReplacer.hpp                                 :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asafrono <asafrono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/18 16:58:08 by asafrono          #+#    #+#             */
-/*   Updated: 2025/04/24 20:00:52 by asafrono         ###   ########.fr       */
+/*   Created: 2025/04/26 17:30:47 by asafrono          #+#    #+#             */
+/*   Updated: 2025/04/26 17:31:09 by asafrono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRINGREPLACER_HPP
-#define STRINGREPLACER_HPP
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
-#include <string>
+#include "ClapTrap.hpp"
 
-class StringReplacer {
-	public:
-	static bool replaceInFile(const std::string& filename, 
-								const std::string& s1, 
-								const std::string& s2);
-	private:
-	static std::string _replaceOccurrences(std::string content, 
-											const std::string& s1, 
-											const std::string& s2);
+class ScavTrap : public ClapTrap {
+public:
+    ScavTrap();
+    ScavTrap(std::string name);
+    ScavTrap(const ScavTrap& other);
+    ScavTrap& operator=(const ScavTrap& other);
+    ~ScavTrap();
+
+    void attack(const std::string& target);
+    void guardGate();
 };
 
 #endif

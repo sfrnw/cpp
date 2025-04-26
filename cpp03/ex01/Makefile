@@ -6,15 +6,15 @@
 #    By: asafrono <asafrono@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/18 16:58:11 by asafrono          #+#    #+#              #
-#    Updated: 2025/04/24 20:00:44 by asafrono         ###   ########.fr        #
+#    Updated: 2025/04/26 17:32:24 by asafrono         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = fixed
+NAME = claptrap
 
-SRC = Fixed.cpp main.cpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
 OBJ_DIR = obj
 OBJS = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 

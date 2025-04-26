@@ -6,7 +6,7 @@
 /*   By: asafrono <asafrono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 20:21:20 by asafrono          #+#    #+#             */
-/*   Updated: 2025/04/23 20:49:50 by asafrono         ###   ########.fr       */
+/*   Updated: 2025/04/26 14:53:57 by asafrono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,8 @@ int main( void ) {
 
     return 0;
 }
+
+
+// Precision: 8 fractional bits give 1/256≈0.00391/256≈0.0039 precision (good for many applications).
+// Performance: Bit-shifting and integer math are faster than floating-point operations on most hardware.
+// Storage: Uses a single int to store both integer and fractional parts.
