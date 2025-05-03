@@ -6,7 +6,7 @@
 /*   By: asafrono <asafrono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 17:05:55 by asafrono          #+#    #+#             */
-/*   Updated: 2025/04/26 17:30:33 by asafrono         ###   ########.fr       */
+/*   Updated: 2025/05/01 14:51:46 by asafrono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #include <string>
 
 class ClapTrap {
-protected:  // Changed to protected for inheritance
+//Changed to protected for inheritance
+protected:
     std::string     _name;
     unsigned int    _hitPoints;
     unsigned int    _energyPoints;
