@@ -6,55 +6,40 @@
 /*   By: asafrono <asafrono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 20:21:20 by asafrono          #+#    #+#             */
-/*   Updated: 2025/05/03 18:21:43 by asafrono         ###   ########.fr       */
+/*   Updated: 2025/05/03 19:12:32 by asafrono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AAnimal.hpp"
-#include "Dog.hpp"
-#include "Cat.hpp"
+#include "IMateriaSource.hpp"
+#include "MateriaSource.hpp"
+#include "ICharacter.hpp"
+#include "Character.hpp"
+#include "AMateria.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
 
-int main() {
-	// This line would now fail to compile!
-	// AAnimal test = AAnimal();
-	
-	// Test 1: Basic allocation/deallocation
-	std::cout << "----- Test 1: Basic -----" << std::endl;
-	const AAnimal* dog = new Dog();
-	const AAnimal* cat = new Cat();
-	delete dog;
-	delete cat;
+int main()
+{
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
 
-	// Test 2: Array of animals
-	std::cout << "\n----- Test 2: Array -----" << std::endl;
-	const int numAnimals = 4;
-	AAnimal* animals[numAnimals];
+	ICharacter* me = new Character("me");
 
-	for (int i = 0; i < numAnimals/2; i++)
-		animals[i] = new Dog();
-	for (int i = numAnimals/2; i < numAnimals; i++)
-		animals[i] = new Cat();
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
 
-	for (int i = 0; i < numAnimals; i++)
-		delete animals[i];
+	ICharacter* bob = new Character("bob");
 
-	// Test 3: Deep copy verification
-	//A deep copy means creating a completely independent copy of an object,
-	// including all objects or data it refers to.
-	// In a deep copy, not only are the object's own values duplicated,
-	// but any referenced objects are also recursively copied. 
-	std::cout << "\n----- Test 3: Deep Copy -----" << std::endl;
-	Dog originalDog;
-	originalDog.getBrain()->setIdea(0, "I love bones");
+	me->use(0, *bob);
+	me->use(1, *bob);
 
-	Dog copiedDog(originalDog);
-	// If the copy is deep, this change will only affect copiedDog's brain.
-    // If the copy is shallow, this change will also affect originalDog's brain.
-	copiedDog.getBrain()->setIdea(0, "Lets bark!");
-
-	std::cout << "Original Dog's idea 0: " << originalDog.getBrain()->getIdea(0) << std::endl;
-	std::cout << "Copied Dog's idea 0: " << copiedDog.getBrain()->getIdea(0) << std::endl;
-
+	delete bob;
+	delete me;
+	delete src;
 	return 0;
 }
 

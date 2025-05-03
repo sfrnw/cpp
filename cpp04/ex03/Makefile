@@ -6,15 +6,15 @@
 #    By: asafrono <asafrono@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/18 16:58:11 by asafrono          #+#    #+#              #
-#    Updated: 2025/05/03 18:19:46 by asafrono         ###   ########.fr        #
+#    Updated: 2025/05/03 19:12:36 by asafrono         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 
-NAME = polymorphism
+NAME = materia
 
-SRC = main.cpp AAnimal.cpp Cat.cpp Dog.cpp Brain.cpp
+SRC = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
 OBJ_DIR = obj
 OBJS = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
