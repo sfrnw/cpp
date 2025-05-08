@@ -6,7 +6,7 @@
 /*   By: asafrono <asafrono@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 20:21:20 by asafrono          #+#    #+#             */
-/*   Updated: 2025/05/03 18:08:46 by asafrono         ###   ########.fr       */
+/*   Updated: 2025/05/08 19:19:51 by asafrono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int main() {
 	Dog copiedDog(originalDog);
 	// If the copy is deep, this change will only affect copiedDog's brain.
     // If the copy is shallow, this change will also affect originalDog's brain.
-	//copiedDog.getBrain()->setIdea(0, "Lets bark!");
+	copiedDog.getBrain()->setIdea(0, "Lets bark!");
 
 	std::cout << "Original Dog's idea 0: " << originalDog.getBrain()->getIdea(0) << std::endl;
 	std::cout << "Copied Dog's idea 0: " << copiedDog.getBrain()->getIdea(0) << std::endl;
